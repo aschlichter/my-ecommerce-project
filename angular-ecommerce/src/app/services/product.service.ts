@@ -14,11 +14,11 @@ export class ProductService {
 
   getProductList(theCategoryId: number): Observable<Product[]> {
 
-    //TODO: URL based category id...
+    const searchUrl = `${this.baseUrl}/search/findByCategoryId?id=${theCategoryId}`;
 
-    return this.httpClient.get<GetResponse>(this.baseUrl).pipe(
+    return this.httpClient.get<GetResponse>(searchUrl).pipe(
       map(response => response._embedded.products)
-    )
+    );
   }
 }
 
