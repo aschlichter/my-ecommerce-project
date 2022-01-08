@@ -7,7 +7,6 @@
       <div class="row">
         <div *ngFor="let tempProduct of products" class="col-md-3">
           <div class="product-box">
-            
             <a routerLink="{{ tempProduct.id }}">
               <img src="{{ tempProduct.imageUrl }}" class="img-responsive" />
             </a>
@@ -29,6 +28,28 @@
           role="alert"
         >
           No products found.
+        </div>
+      </div>
+
+      <!-- begin footer -->
+      <div class="footer-pagination">
+        <div class="row">
+          <div class="col-md-6"></div>
+          
+          <div class="col-md-6">
+            <div class="row">
+              <div class="col-md-9" style="padding-left: 30%">
+
+                <ngb-pagination [(page)]="thePageNumber"
+                                [pageSize]="thePageSize"
+                                [collectionSize]="theTotalElements"
+                                (pageChange)="listProducts()">
+
+                </ngb-pagination>
+
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
