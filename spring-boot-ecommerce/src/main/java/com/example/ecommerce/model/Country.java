@@ -1,5 +1,6 @@
 package com.example.ecommerce.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,13 +19,10 @@ public class Country {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "code")
-    private String countryCode;
-
-    @Column(name = "name")
-    private String countryName;
-
+    private String code;
+    private String name;
 
     @OneToMany(mappedBy = "country")
+    @JsonIgnore
     private List<State> states;
 }
