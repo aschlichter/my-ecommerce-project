@@ -24,7 +24,7 @@ export class MyWebShopFormService {
 
   getStates(theCountryCode: string): Observable<State[]> {
 
-    const searchStatesUrl = `${this.statesUrl}/search/findByCountryCode?=code${theCountryCode}`; 
+    const searchStatesUrl = `${this.statesUrl}/search/findByCountryCode?code=${theCountryCode}`; 
 
     return this.httpClient.get<GetResponseStates>(searchStatesUrl).pipe(
       map(response => response._embedded.states)
