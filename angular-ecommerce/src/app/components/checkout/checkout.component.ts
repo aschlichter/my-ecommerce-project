@@ -56,11 +56,14 @@ export class CheckoutComponent implements OnInit {
                                     MyWebShopValidators.notOnlyWhiteSpace])
       }),
       billingAddress: this.formBuilder.group({
-        country: [''],
-        street: [''],
-        city: [''],
-        state: [''],
-        zipCode: ['']
+        country: new FormControl('',[Validators.required]), 
+        street: new FormControl('',[Validators.required, Validators.minLength(2), 
+                                    MyWebShopValidators.notOnlyWhiteSpace]),
+        city: new FormControl('',[Validators.required, Validators.minLength(2), 
+                                    MyWebShopValidators.notOnlyWhiteSpace]),
+        state: new FormControl('',[Validators.required]),
+        zipCode: new FormControl('', [Validators.required, Validators.minLength(2), 
+                                    MyWebShopValidators.notOnlyWhiteSpace])
       }),
       creditCard: this.formBuilder.group({
         cardType: [''],
@@ -106,6 +109,12 @@ export class CheckoutComponent implements OnInit {
   get shippingAddressCity() { return this.checkoutFormGroup.get('shippingAddress.city'); }
   get shippingAddressState() { return this.checkoutFormGroup.get('shippingAddress.state'); }
   get shippingAddressZipCode() { return this.checkoutFormGroup.get('shippingAddress.zipCode'); }
+
+  get billingAddressCountry() { return this.checkoutFormGroup.get('billingAddress.country'); }
+  get billingAddressStreet() { return this.checkoutFormGroup.get('billingAddress.street'); }
+  get billingAddressCity() { return this.checkoutFormGroup.get('billingAddress.city'); }
+  get billingAddressState() { return this.checkoutFormGroup.get('billingAddress.state'); }
+  get billingAddressZipCode() { return this.checkoutFormGroup.get('billingAddress.zipCode'); }
 
 
   copyShippingAddressToBillingAddress(event) {
