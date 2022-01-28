@@ -12,7 +12,8 @@ export class CartService {
   totalPrice: Subject<number> = new BehaviorSubject<number>(0);
   totalQuantity: Subject<number> = new BehaviorSubject<number>(0);
 
-  storage: Storage = sessionStorage;
+  // instead of sessionStorage to survive the browser restsart
+  storage: Storage = localStorage;
 
   constructor() {
 
