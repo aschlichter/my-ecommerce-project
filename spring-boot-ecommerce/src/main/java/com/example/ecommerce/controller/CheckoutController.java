@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 /**
  * Created by adam on 2022. 01. 19.
  */
-@CrossOrigin("http://localhost:4200")
 @RestController
 @RequestMapping("/api/checkout")
 public class CheckoutController {
