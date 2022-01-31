@@ -1,9 +1,6 @@
 package com.example.ecommerce.config;
 
-import com.example.ecommerce.model.Country;
-import com.example.ecommerce.model.Product;
-import com.example.ecommerce.model.ProductCategory;
-import com.example.ecommerce.model.State;
+import com.example.ecommerce.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
@@ -31,12 +28,11 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
 
     @Autowired
     public MyDataRestConfig(EntityManager theEntityManager) {
-        this.entityManager = theEntityManager;
+        entityManager = theEntityManager;
     }
 
     @Override
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry cors) {
-        RepositoryRestConfigurer.super.configureRepositoryRestConfiguration(config, cors);
 
         HttpMethod[] theUnsupportedActions = {HttpMethod.PUT, HttpMethod.POST, HttpMethod.DELETE, HttpMethod.PATCH};
 
@@ -45,6 +41,7 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
         disableHttpMethods(ProductCategory.class, config, theUnsupportedActions);
         disableHttpMethods(Country.class, config, theUnsupportedActions);
         disableHttpMethods(State.class, config, theUnsupportedActions);
+        disableHttpMethods(Order.class, config, theUnsupportedActions);
 
         exposeIds(config);
 
@@ -68,7 +65,7 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
             entityClasses.add(tempEntity.getJavaType());
         }
 
-        Class[] domainTypes = entityClasses.toArray(entityClasses.toArray(new Class[0]));
+        Class[] domainTypes = entityClasses.toArray(new Class[0]);
         config.exposeIdsFor(domainTypes);
     }
 }
