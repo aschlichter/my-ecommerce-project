@@ -34,6 +34,8 @@ export class ProductService {
 
     const searchUrl = `${this.baseUrl}/search/findByCategoryId?id=${theCategoryId}`;
 
+    console.log(`Getting products from - ${searchUrl}`);
+    
     return this.getProducts(searchUrl);
   }
 
