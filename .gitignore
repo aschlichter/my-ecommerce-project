@@ -1,3 +1,4 @@
 angular-ecommerce/localhost.conf
 angular-ecommerce/ssl-localhost/localhost.crt
 angular-ecommerce/ssl-localhost/localhost.key
+spring-boot-ecommerce/src/main/resources/application.properties
