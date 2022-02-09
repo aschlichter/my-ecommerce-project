@@ -94,6 +94,13 @@ export class CheckoutComponent implements OnInit {
           
       })
     });
+    
+    this.myWebShopFormService.getCountries().subscribe(
+      data => {
+        console.log("Retrieved countries: " + JSON.stringify(data));
+        this.countries = data;
+      }
+    );
 
   }
   
