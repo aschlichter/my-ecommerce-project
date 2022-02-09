@@ -10,12 +10,16 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.logging.Logger;
+
 /**
  * Created by adam on 2022. 01. 19.
  */
 @RestController
 @RequestMapping("/api/checkout")
 public class CheckoutController {
+
+    Logger logger = Logger.getLogger(getClass().getName());
 
     private CheckoutService checkoutService;
 
@@ -34,6 +38,7 @@ public class CheckoutController {
     @PostMapping("/payment-intent")
     public ResponseEntity<String> createPaymentIntent(@RequestBody PaymentInfo paymentInfo) throws StripeException {
 
+        logger.info("paymentInfo.amount: " + paymentInfo.getAmount());
         PaymentIntent paymentIntent = checkoutService.createPaymentIntent(paymentInfo);
 
         String paymentStr = paymentIntent.toJson();
