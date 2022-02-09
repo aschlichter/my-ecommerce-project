@@ -250,8 +250,10 @@ export class CheckoutComponent implements OnInit {
     purchase.order = order;
     purchase.orderItems = orderItems;
 
-    this.paymentInfo.amount = this.totalPrice * 100;
+    this.paymentInfo.amount = Math.round(this.totalPrice * 100);
     this.paymentInfo.currency = "EUR";
+
+    console.log(`this.paymentInfo.amount: ${this.paymentInfo.amount}`);
 
     if (!this.checkoutFormGroup.invalid && this.displayError.textContent === "") {
       this.checkoutService.createPaymentIntent(this.paymentInfo).subscribe(
